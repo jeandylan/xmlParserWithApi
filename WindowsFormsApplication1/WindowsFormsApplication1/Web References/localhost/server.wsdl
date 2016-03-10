@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="localhost/server.php" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="localhost/server.php" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="localhost/server.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="Contact">
+        <xsd:all>
+          <xsd:element name="id" type="xsd:string" />
+          <xsd:element name="image" type="xsd:string" />
+          <xsd:element name="firstName" type="xsd:string" />
+          <xsd:element name="lastName" type="xsd:string" />
+          <xsd:element name="gender" type="xsd:string" />
+          <xsd:element name="nickName" type="xsd:string" />
+          <xsd:element name="dateOfBirth" type="xsd:string" />
+          <xsd:element name="city" type="xsd:string" />
+          <xsd:element name="country" type="xsd:string" />
+          <xsd:element name="street" type="xsd:string" />
+          <xsd:element name="postalCode" type="xsd:string" />
+          <xsd:element name="officeEmail" type="xsd:string" />
+          <xsd:element name="privateEmail" type="xsd:string" />
+          <xsd:element name="privateMobile" type="xsd:string" />
+          <xsd:element name="office" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ContactArray">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:Contact[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="viewAllContactRequest">
+    <wsdl:part name="pstAnyThing" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="viewAllContactResponse">
+    <wsdl:part name="return" type="tns:ContactArray" />
+  </wsdl:message>
+  <wsdl:message name="searchIdRequest">
+    <wsdl:part name="pstId" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="searchIdResponse">
+    <wsdl:part name="return" type="tns:ContactArray" />
+  </wsdl:message>
+  <wsdl:message name="searchLastNameRequest">
+    <wsdl:part name="pstLastName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="searchLastNameResponse">
+    <wsdl:part name="return" type="tns:ContactArray" />
+  </wsdl:message>
+  <wsdl:message name="searchFirstNameRequest">
+    <wsdl:part name="pstFirstName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="searchFirstNameResponse">
+    <wsdl:part name="return" type="tns:ContactArray" />
+  </wsdl:message>
+  <wsdl:message name="searchPrivateMobileRequest">
+    <wsdl:part name="pstPrivateNumber" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="searchPrivateMobileResponse">
+    <wsdl:part name="return" type="tns:ContactArray" />
+  </wsdl:message>
+  <wsdl:message name="searchStreetRequest">
+    <wsdl:part name="pstFirstName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="searchStreetResponse">
+    <wsdl:part name="return" type="tns:ContactArray" />
+  </wsdl:message>
+  <wsdl:message name="insertContactRequest">
+    <wsdl:part name="pstFirstName" type="xsd:string" />
+    <wsdl:part name="pstLastName" type="xsd:string" />
+    <wsdl:part name="pstNickName" type="xsd:string" />
+    <wsdl:part name="pstGender" type="xsd:string" />
+    <wsdl:part name="pstDateOfBirth" type="xsd:date" />
+    <wsdl:part name="pstCity" type="xsd:string" />
+    <wsdl:part name="pstStreet" type="xsd:string" />
+    <wsdl:part name="pstCountry" type="xsd:string" />
+    <wsdl:part name="pstPostalCode" type="xsd:string" />
+    <wsdl:part name="pstOfficeEmail" type="xsd:string" />
+    <wsdl:part name="pstPrivateEmail" type="xsd:string" />
+    <wsdl:part name="pstPrivateMobile" type="xsd:string" />
+    <wsdl:part name="pstOffice" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="insertContactResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="editContactByIdRequest">
+    <wsdl:part name="pstId" type="xsd:string" />
+    <wsdl:part name="pstFirstName" type="xsd:string" />
+    <wsdl:part name="pstLastName" type="xsd:string" />
+    <wsdl:part name="pstNickName" type="xsd:string" />
+    <wsdl:part name="pstGender" type="xsd:string" />
+    <wsdl:part name="pstDateOfBirth" type="xsd:date" />
+    <wsdl:part name="pstCity" type="xsd:string" />
+    <wsdl:part name="pstStreet" type="xsd:string" />
+    <wsdl:part name="pstCountry" type="xsd:string" />
+    <wsdl:part name="pstPostalCode" type="xsd:string" />
+    <wsdl:part name="pstOfficeEmail" type="xsd:string" />
+    <wsdl:part name="pstPrivateEmail" type="xsd:string" />
+    <wsdl:part name="pstPrivateMobile" type="xsd:string" />
+    <wsdl:part name="pstOffice" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="editContactByIdResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteContactByIdRequest">
+    <wsdl:part name="pstId" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteContactByIdResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="contactPortType">
+    <wsdl:operation name="viewAllContact">
+      <wsdl:input message="tns:viewAllContactRequest" />
+      <wsdl:output message="tns:viewAllContactResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchId">
+      <wsdl:input message="tns:searchIdRequest" />
+      <wsdl:output message="tns:searchIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchLastName">
+      <wsdl:input message="tns:searchLastNameRequest" />
+      <wsdl:output message="tns:searchLastNameResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchFirstName">
+      <wsdl:input message="tns:searchFirstNameRequest" />
+      <wsdl:output message="tns:searchFirstNameResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchPrivateMobile">
+      <wsdl:input message="tns:searchPrivateMobileRequest" />
+      <wsdl:output message="tns:searchPrivateMobileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchStreet">
+      <wsdl:input message="tns:searchStreetRequest" />
+      <wsdl:output message="tns:searchStreetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insertContact">
+      <wsdl:input message="tns:insertContactRequest" />
+      <wsdl:output message="tns:insertContactResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="editContactById">
+      <wsdl:input message="tns:editContactByIdRequest" />
+      <wsdl:output message="tns:editContactByIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteContactById">
+      <wsdl:input message="tns:deleteContactByIdRequest" />
+      <wsdl:output message="tns:deleteContactByIdResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="contactBinding" type="tns:contactPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="viewAllContact">
+      <soap:operation soapAction="http://localhost/ContactWebService/server.php/viewAllContact" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchId">
+      <soap:operation soapAction="http://localhost/ContactWebService/server.php/searchId" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchLastName">
+      <soap:operation soapAction="http://localhost/ContactWebService/server.php/searchLastName" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchFirstName">
+      <soap:operation soapAction="http://localhost/ContactWebService/server.php/searchFirstName" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchPrivateMobile">
+      <soap:operation soapAction="http://localhost/ContactWebService/server.php/searchPrivateMobile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchStreet">
+      <soap:operation soapAction="http://localhost/ContactWebService/server.php/searchStreet" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="tns" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertContact">
+      <soap:operation soapAction="http://localhost/ContactWebService/server.php/insertContact" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editContactById">
+      <soap:operation soapAction="http://localhost/ContactWebService/server.php/editContactById" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteContactById">
+      <soap:operation soapAction="http://localhost/ContactWebService/server.php/deleteContactById" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="contact">
+    <wsdl:port name="contactPort" binding="tns:contactBinding">
+      <soap:address location="http://localhost/ContactWebService/server.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
